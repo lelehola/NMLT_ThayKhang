@@ -65,7 +65,7 @@ int ktCucTieu(float a[][500], int m, int n, int c, int d)
 	int flag = 1;
 	for (int i = c - 1; i <= c + 1; i++)
 		for (int j = d - 1; j <= d + 1; j++)
-			if (a[c][d] > a[i][j])
+			if (a[c][d] >= a[i][j])
 				flag = 0;
 	return flag;
 }
