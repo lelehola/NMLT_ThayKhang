@@ -12,32 +12,29 @@ int main()
     cin >> SoGiai;
     int a[100];
 	for(int i =0; i < n; i++)
-	  cin >> a[i]
-	  ;
+	  cin >> a[i];
     sort(a,n);
+	for(int i =0; i < n; i++)
+	  cout << a[i];
+	cout << endl;
     int kq = NguoiNhan(a,n,SoGiai);
     cout << kq;
     return 0;
 
 }
 int NguoiNhan(int a[], int n, int SoGiai)
-{   int dem1 = 0;
-	for(int i = 0; i < n; i++)
-	  if(a[i] == 0)
-	     dem1++;
-	if(dem1 == n)
-	  return 0;
+{   
 	int dem = 0;
 	int i = 0;
-    while(dem < SoGiai)
+    for(int i = 0 ; i  < n; i++)
 	{   
-		dem++;
+		if(a[i] > 0)
+		  dem++;
 		int dem1 = 0;
 		for(int j = i + 1; j < n; j++)
-		  if(a[i] == a[j])
+		  if(a[i] == a[j] && a[i] >0 && a[j] >0)
 		    dem1++;
 		dem += dem1;
-		i++;
 	}
 	return dem;
 }
@@ -53,4 +50,14 @@ void sort(int a[], int n)
       for(int j = i+1; j < n; j++)
         if(a[i] < a[j])
           HoanVi(a[i], a[j]);
+}
+void XoaPhanTu(int a[], int &n)
+{
+	for(int i = 0; i < n; i++)
+	  if(a[i] == 0)
+	    {
+			for(int j = i; j < n; j++)
+			  a[i] = a[i+1];
+			n--;
+		}
 }
